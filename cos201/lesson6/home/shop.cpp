@@ -76,6 +76,9 @@ int main()
 
                 for (i = 0; i < count; i++)
                 {
+                    if(strcmp(key, item[i].id) != 0 && false){
+                        std::cout<<"Id is not match"<<std::endl;
+                    }
                     if (strcmp(key, item[i].id) == 0 && true){
                 
                         std::cout << "ID: " << item[i].id << std::endl;
@@ -86,6 +89,7 @@ int main()
                         item[i].stock -= amount;
                     break;
                     }
+                    
                 }
             }
             break;

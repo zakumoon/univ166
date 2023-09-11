@@ -9,8 +9,7 @@ struct shop
     float cost;
     int stock;
 };
-int menuR(){
-        int select = -1;
+void menuR(){
 
         std::cout <<std::setw(13)<< " MENU " << std::endl;
         std::cout << "1. Add item to cart " << std::endl;
@@ -18,10 +17,7 @@ int menuR(){
         std::cout << "3. Check product " << std::endl;
         std::cout << "4. Close shop : " << std::endl;
         std::cout << " Select 1, 2, 3 or 4: ";
-        std::cin >> select;
-        std::cout << std::endl;
-
-return select;
+        
 }
 
 int main()
@@ -29,41 +25,45 @@ int main()
     struct shop item[100];
     int count = 0;
     bool same = false;
+    int select = -1;
+
     while (true)
     {
-        int choose = menuR();
+        menuR();
+        std::cin >> select;
+        std::cout << std::endl;
 
-        if (choose == 4)
+        if (select == 4)
         {
             break;
         }
-        switch (choose)
+        switch (select)
         {
             case 1:
-            {
+            {       
                 std::cout << " NEW PRODUCT" << std::endl;  
                 std::cout << "ID: ";
-                std::cin >> item[count].id;          
-
+                std::cin >> item[count].id;    
                 for (int i = 0; i < count; i++) {
                     if (strcmp(item[count].id, item[i].id) == 0) {
                         same = true;
                         std::cout << "Try again" << std::endl;
                         std::cout << std::endl;
+                        break;
                     }
-                    break;
+
                 }
-                    if (!same){
+
+                if (!same) {
                     std::cout << "Name: ";
                     std::cin >> item[count].name;
                     std::cout << "Price: ";
                     std::cin >> item[count].cost;
                     std::cout << "Stocks: ";
                     std::cin >> item[count].stock;
+                    count++;
                 }
-                count++;
 
-    
             }
             break;
             case 2:
@@ -79,8 +79,8 @@ int main()
 
                 for (i = 0; i < count; i++)
                 {
-                    if (strcmp(key, item[i].id) == 0 && true){
-                
+                    if (strcmp(key, item[i].id) == 0){
+                        same = true;
                         std::cout << "ID: " << item[i].id << std::endl;
                         std::cout << "Item: " << item[i].name << std::endl;
                         std::cout << "Price: " << item[i].cost << std::endl;
@@ -88,6 +88,9 @@ int main()
 
                         item[i].stock -= amount;
                     break;
+                    }
+                    if (!same){
+                        std::cout<<"Try again "<<std::endl;
                     }
                 }
             }
