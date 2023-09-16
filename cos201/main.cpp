@@ -52,11 +52,11 @@ void check( struct shop item[], int n){
         if (strcmp(key, item[i].id) == 0 && true){
             cout<<"ID: "<<item[i].id<<endl;
             cout<<"Name: "<<item[i].name<<endl;
-            cout<<"Price: "<<item[i].price<<endl;
+            cout<<"Price: "<<item[i].price<<'\n';
             int total = item[i].price * amount;
             item[i].stock -= amount;
-            cout<<"InStock: "<<item[i].stock<<endl;
-            cout<<"Total: "<<total<<endl;
+            cout<<"InStock: "<<item[i].stock<<'\n';
+            cout<<"Total: "<<total<<'\n';
 
             }
         }   
@@ -67,31 +67,31 @@ void summ(struct shop item[], int n){
         std::cout << std::setw(15) << "Name: ";
         std::cout << std::setw(15) << "Cost: ";
         std::cout << std::setw(15) << "Stock: " << std::endl;
-   for (int i = 0; i < n; i++){
-        std::cout << std::setw(15) << item[i].id;
-        std::cout << std::setw(15) << item[i].name;
-        std::cout << std::setw(15) << item[i].price;
-        std::cout << std::setw(15) << item[i].stock << std::endl;
-}
+        for (int i = 0; i < n; i++){
+            std::cout << std::setw(15) << item[i].id;
+            std::cout << std::setw(15) << item[i].name;
+            std::cout << std::setw(15) << item[i].price;
+            std::cout << std::setw(15) << item[i].stock << std::endl;
+    }
 }
 int main(){
-struct shop item[100];
-int n = 0;
-bool same = false;
+    struct shop item[100];
+    int n = 0;
+    bool same = false;
 
-while (true){
-    int select = menu(n);
-    switch (select) {
-        case 1: {
-            regisItem(item, n, same);
-        } break;
-        case 2: {
-            check(item, n);
-        } break;
-        case 3: {
-            summ(item, n);
-        } break;
-        case 4: {
+    while (true){
+        int select = menu(n);
+        switch (select) {
+            case 1: {
+                regisItem(item, n, same);
+            } break;
+            case 2: {
+                check(item, n);
+            } break;
+            case 3: {
+                summ(item, n);
+            } break;
+            case 4: {
                 return 0;
             } break;
         }

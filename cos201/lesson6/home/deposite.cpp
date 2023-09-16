@@ -77,7 +77,7 @@ int main(){
 
                 cout<<"Enter accout ID?= ";cin>>key;
                     for (int i = 0; i < count; i++){
-                        if (strcmp(bank[i].id, key) == 0 && true){
+                        if (strcmp(bank[i].id, key) == 0 && bank[i].amount >= 100){
                             cout<<"Withdraw amount: ";cin>>money;
                             bank[i].amount -= money;
 
