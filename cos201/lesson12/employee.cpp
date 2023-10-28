@@ -22,33 +22,40 @@ void getMenu(emp *&head, int n){
 			cout<<i+1<<") Experiences: "; cin>>getInfo->exp;
 		getInfo->next = head;
 		head = getInfo;
+
+	
 	}
 }
-void employeeDisplay(emp *&head){
-	struct emp *empDisplay = head;
-	while (empDisplay != NULL){
-		cout<<setw(10)<<"Employee"<<endl;
-		cout<<"Sex: "<<empDisplay->sex<<endl;
-		cout<<"Age: "<<empDisplay->age<<endl;
-		cout<<"Status: "<<empDisplay->age<<endl;
-		cout<<"Education: "<<empDisplay->age<<endl;
-		cout<<"Experience: "<<empDisplay->age<<endl;
-	empDisplay = empDisplay->next;
-	}
+void employeeDisplay(emp *&head, int n, int& avgAge, int& avgExp){
+    struct emp *empDisplay = head;
+    cout << setw(10) << "Employee" << endl;
+
+    while (empDisplay != NULL){
+        cout << "Sex: " << empDisplay->sex << endl;
+        cout << "Age: " << empDisplay->age << endl;
+        cout << "Status: " << empDisplay->stat << endl;
+        cout << "Education: " << empDisplay->degr << endl;
+        cout << "Experience: " << empDisplay->exp << endl;
+        avgAge = avgAge + empDisplay->age;
+        avgExp = avgExp + empDisplay->exp;
+
+        empDisplay = empDisplay->next;
+    }
 }
+
 
 int main(){
 	emp *data = nullptr;
 	cout<<"Enter num of employee: ";
 	int n;
 	cin>>n;
+	int avgAge =0, avgExp=0;
 
 	getMenu(data, n);
-	employeeDisplay(data);
-	int avgAge, avgExp;
-	avgAge = data->age / n;
-	avgExp = data->exp / n;
-
+	employeeDisplay(data, n, avgAge, avgExp);
+		
+	avgAge = avgAge / n;
+	avgExp = avgExp / n;
 	cout<<"avgAge: "<<avgAge<<endl;
 	cout<<"avgExp: "<<avgExp<<endl;
 
